@@ -218,3 +218,4 @@ import './features/quick-new-issue';
 import './features/scrollable-areas';
 import './features/clean-repo-header';
 import './features/emphasize-draft-pr-label';
+import './features/comment-type-buttons';
