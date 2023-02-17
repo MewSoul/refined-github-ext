@@ -12,7 +12,9 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 
 ## Install
 
-### Chrome and other Chromium browsers (e.g. Brave)
+### Option 1 - Download the archive
+
+#### Chrome and other Chromium browsers (e.g. Brave)
 
 1. Download the latest [release](https://github.com/MewSoul/refined-github-ext/releases) and unzip the archive.
 2. Open your Chromium browser at the extension page (e.g. `chrome://extensions/`, `brave://extensions/`...).
@@ -20,13 +22,23 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 4. Click `Load unpacked` and select the folder `refined-github-ext` you extracted.
 5. The extension is now installed.
 
-### Firefox
+#### Firefox
 
 1. Download the latest [release](https://github.com/MewSoul/refined-github-ext/releases) and unzip the archive.
 2. Open Firefox at the following address: `about:debugging#/runtime/this-firefox`.
 3. Click on `Load Temporary Add-On...`.
 4. Navigate to the folder you extracted and select `options.html`.
 5. The extension is now installed.
+
+### Option 2 - Clone the repo and build the extension
+
+1. Make sure you have [npm (Node)](https://nodejs.org/en/download/) installed.
+2. Clone the repository.
+3. Run `npm run build` at the root of the repository
+4. Open the extension page of your browser (e.g. for Chrome `chrome://extensions/`, for Brave: `brave://extensions/`, for Firefox: `about:debugging#/runtime/this-firefox`, ...).
+5. A - For Chromium browsers: Make sure `Developer mode` is enabled (located in the top right hand corner), click `Load unpacked` and select the folder `distribution` that has been created previously.
+5. B - For Firefox: Click on `Load Temporary Add-On...`, open the folder `distribution` that has been created previously and select `options.html`.
+6. The extension is now installed.
 
 ### Sponsor
 
