@@ -16,7 +16,7 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 
 #### Chrome and other Chromium browsers (e.g. Brave)
 
-1. Download the latest [release](https://github.com/MewSoul/refined-github-ext/releases) and unzip the archive.
+1. Download the latest [release](https://github.com/HypixelStudios/refined-github-extended/releases) and unzip the archive.
 2. Open your Chromium browser at the extension page (e.g. `chrome://extensions/`, `brave://extensions/`...).
 3. Toggle on `Developer mode` located in the top right hand corner.
 4. Click `Load unpacked` and select the folder `refined-github-ext` you extracted.
@@ -24,7 +24,7 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 
 #### Firefox
 
-1. Download the latest [release](https://github.com/MewSoul/refined-github-ext/releases) and unzip the archive.
+1. Download the latest [release](https://github.com/HypixelStudios/refined-github-extended/releases) and unzip the archive.
 2. Open Firefox at the following address: `about:debugging#/runtime/this-firefox`.
 3. Click on `Load Temporary Add-On...`.
 4. Navigate to the folder you extracted and select `options.html`.
