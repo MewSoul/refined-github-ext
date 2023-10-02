@@ -2,7 +2,7 @@ import React from 'dom-chef';
 import * as pageDetect from 'github-url-detection';
 import select from 'select-dom';
 
-import features from '../feature-manager';
+import features from '../feature-manager.js';
 
 function init(): void {
 	const templateDropdown = (

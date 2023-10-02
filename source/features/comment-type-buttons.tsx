@@ -4,9 +4,9 @@ import * as pageDetect from 'github-url-detection';
 import * as textFieldEdit from 'text-field-edit';
 import delegate, {DelegateEvent} from 'delegate-it';
 
-import features from '../feature-manager';
-import smartBlockWrap from '../helpers/smart-block-wrap';
-import observe from '../helpers/selector-observer';
+import features from '../feature-manager.js';
+import smartBlockWrap from '../helpers/smart-block-wrap.js';
+import observe from '../helpers/selector-observer.js';
 
 function addCommentTypeNote({delegateTarget}: DelegateEvent<MouseEvent, HTMLButtonElement>): void {
 	addCommentType(delegateTarget, "[Note] ");
@@ -52,10 +52,10 @@ function addCommentTypeButtons(referenceButton: HTMLElement): void {
 
 function init(signal: AbortSignal): void {
 	observe('md-ref', addCommentTypeButtons, {signal});
-	delegate(document, '.rgh-comment-type-btn-note', 'click', addCommentTypeNote, {signal});
-	delegate(document, '.rgh-comment-type-btn-details', 'click', addCommentTypeDetails, {signal});
-	delegate(document, '.rgh-comment-type-btn-change', 'click', addCommentTypeChange, {signal});
-	delegate(document, '.rgh-comment-type-btn-praise', 'click', addCommentTypePraise, {signal});
+	delegate('.rgh-comment-type-btn-note', 'click', addCommentTypeNote, {signal});
+	delegate('.rgh-comment-type-btn-details', 'click', addCommentTypeDetails, {signal});
+	delegate('.rgh-comment-type-btn-change', 'click', addCommentTypeChange, {signal});
+	delegate('.rgh-comment-type-btn-praise', 'click', addCommentTypePraise, {signal});
 }
 
 void features.add(import.meta.url, {
