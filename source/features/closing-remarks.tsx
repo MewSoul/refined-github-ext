@@ -1,6 +1,6 @@
 import React from 'dom-chef';
 import {CachedFunction} from 'webext-storage-cache';
-import select from 'select-dom';
+import {$} from 'select-dom';
 import {TagIcon} from '@primer/octicons-react';
 import * as pageDetect from 'github-url-detection';
 
@@ -12,7 +12,7 @@ import TimelineItem from '../github-helpers/timeline-item.js';
 import attachElement from '../helpers/attach-element.js';
 import {canEditEveryComment} from './quick-comment-edit.js';
 import {buildRepoURL, getRepo, isRefinedGitHubRepo} from '../github-helpers/index.js';
-import {releasesCount} from './releases-tab.js';
+import {getReleases} from './releases-tab.js';
 import observe from '../helpers/selector-observer.js';
 
 // TODO: Not an exact match; Moderators can edit comments but not create releases
@@ -43,7 +43,7 @@ function createReleaseUrl(): string | undefined {
 }
 
 async function init(signal: AbortSignal): Promise<void> {
-	const mergeCommit = select(`.TimelineItem.js-details-container.Details a[href^="/${getRepo()!.nameWithOwner}/commit/" i] > code`)!.textContent!;
+	const mergeCommit = $(`.TimelineItem.js-details-container.Details a[href^="/${getRepo()!.nameWithOwner}/commit/" i] > code`)!.textContent;
 	const tagName = await firstTag.get(mergeCommit);
 
 	if (tagName) {
@@ -91,7 +91,8 @@ function addExistingTagLinkFooter(tagName: string, tagUrl: string): void {
 }
 
 async function addReleaseBanner(text = 'Now you can release this change'): Promise<void> {
-	if (await releasesCount.get(getRepo()!.nameWithOwner) === 0) {
+	const [releases] = await getReleases();
+	if (releases === 0) {
 		return;
 	}
 

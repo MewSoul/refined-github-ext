@@ -1,5 +1,5 @@
 import React from 'dom-chef';
-import select from 'select-dom';
+import {$, elementExists} from 'select-dom';
 import domLoaded from 'dom-loaded';
 import stripIndent from 'strip-indent';
 import {Promisable} from 'type-fest';
@@ -18,7 +18,6 @@ import {
 import optionsStorage, {isFeatureDisabled, RGHOptions} from './options-storage.js';
 import {
 	applyStyleHotfixes,
-	styleHotfixes,
 	getLocalHotfixesAsOptions,
 	preloadSyncLocalStrings,
 	brokenFeatures,
@@ -113,7 +112,7 @@ const globalReady = new Promise<RGHOptions>(async resolve => {
 		return;
 	}
 
-	if (select.exists('[refined-github]')) {
+	if (elementExists('[refined-github]')) {
 		console.warn(stripIndent(`
 			Refined GitHub has been loaded twice. This may be because:
 
@@ -127,7 +126,9 @@ const globalReady = new Promise<RGHOptions>(async resolve => {
 
 	document.documentElement.setAttribute('refined-github', '');
 
-	void styleHotfixes.get(version).then(applyStyleHotfixes);
+	// Request in the background page to avoid showing a 404 request in the console
+	// https://github.com/refined-github/refined-github/issues/6433
+	void browser.runtime.sendMessage({getStyleHotfixes: true}).then(applyStyleHotfixes);
 
 	if (options.customCSS.trim().length > 0) {
 		// Review #5857 and #5493 before making changes
@@ -146,7 +147,7 @@ const globalReady = new Promise<RGHOptions>(async resolve => {
 	log.info = options.logging ? console.log : () => {/* No logging */};
 	log.http = options.logHTTP ? console.log : () => {/* No logging */};
 
-	if (select.exists('body.logged-out')) {
+	if (elementExists('body.logged-out')) {
 		console.warn('Refined GitHub is only expected to work when you’re logged in to GitHub. Errors will not be shown.');
 		features.log.error = () => {/* No logging */};
 	}
@@ -265,7 +266,7 @@ async function add(url: string, ...loaders: FeatureLoader[]): Promise<void> {
 		}
 
 		document.addEventListener('turbo:render', () => {
-			if (!deduplicate || !select.exists(deduplicate)) {
+			if (!deduplicate || !elementExists(deduplicate)) {
 				void setupPageLoad(id, details);
 			}
 		});
@@ -310,9 +311,9 @@ void add('rgh-deduplicator' as FeatureID, {
 	async init() {
 		// `await` kicks it to the next tick, after the other features have checked for 'has-rgh', so they can run once.
 		await Promise.resolve();
-		select('has-rgh')?.remove(); // https://github.com/refined-github/refined-github/issues/6568
-		select(_`#js-repo-pjax-container, #js-pjax-container`)?.append(<has-rgh/>);
-		select(_`turbo-frame`)?.append(<has-rgh-inner/>); // #4567
+		$('has-rgh')?.remove(); // https://github.com/refined-github/refined-github/issues/6568
+		$(_`#js-repo-pjax-container, #js-pjax-container`)?.append(<has-rgh/>);
+		$(_`turbo-frame`)?.append(<has-rgh-inner/>); // #4567
 	},
 });
 

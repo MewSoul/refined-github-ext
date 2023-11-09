@@ -1,7 +1,7 @@
 import React from 'dom-chef';
 import * as pageDetect from 'github-url-detection';
 import toMilliseconds from '@sindresorhus/to-milliseconds';
-import select from 'select-dom';
+import {$, elementExists} from 'select-dom';
 import twas from 'twas';
 import {InfoIcon} from '@primer/octicons-react';
 
@@ -11,7 +11,7 @@ import observe from '../helpers/selector-observer.js';
 import {buildRepoURL, isAnyRefinedGitHubRepo} from '../github-helpers/index.js';
 import {closedOrMergedMarkerSelector, getLastCloseEvent} from './jump-to-conversation-close-event.js';
 
-const isClosedOrMerged = (): boolean => select.exists(closedOrMergedMarkerSelector);
+const isClosedOrMerged = (): boolean => elementExists(closedOrMergedMarkerSelector);
 
 /** Returns milliseconds passed since `date` */
 function timeAgo(date: Date): number {
@@ -19,7 +19,7 @@ function timeAgo(date: Date): number {
 }
 
 function getCloseDate(): Date {
-	const datetime = select('relative-time', getLastCloseEvent())!.getAttribute('datetime')!;
+	const datetime = $('relative-time', getLastCloseEvent())!.getAttribute('datetime')!;
 	console.assert(datetime, 'Datetime attribute missing from relative-time');
 	return new Date(datetime);
 }
@@ -65,6 +65,24 @@ function init(signal: AbortSignal): void | false {
 	observe('#issuecomment-new file-attachment', addConversationBanner, {signal});
 }
 
+function makeFieldKinder(field: HTMLParagraphElement): void {
+	if (field.textContent.trim() === 'Add your comment here...') {
+		// Regular issue/PR comment field, or single review comments
+		// https://github.com/refined-github/refined-github/pull/6991
+		field.textContent = 'Add your comment here, be kind...';
+	} else if (field.textContent.trim() === 'Leave a comment') {
+		// Main review comment field
+		// https://github.com/refined-github/refined-github/pull/6991/files
+		field.textContent = 'Leave a comment, be kind';
+	} else {
+		features.log.error(import.meta.url, `Unexpected placeholder text: ${field.textContent}`);
+	}
+}
+
+function initKindness(signal: AbortSignal): void {
+	observe('p.CommentBox-placeholder', makeFieldKinder, {signal});
+}
+
 void features.add(import.meta.url, {
 	exclude: [
 		isAnyRefinedGitHubRepo,
@@ -74,6 +92,11 @@ void features.add(import.meta.url, {
 	],
 	awaitDomReady: true, // We're specifically looking for the last event
 	init,
+}, {
+	include: [
+		pageDetect.hasComments,
+	],
+	init: initKindness,
 });
 
 /*

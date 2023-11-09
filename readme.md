@@ -174,8 +174,8 @@ Thanks for contributing! 🦋🙌
 - [](# "archive-forks-link") [Helps you find forks on archived repos.](https://user-images.githubusercontent.com/1402241/230362566-12493c80-bffe-4c7a-b9ba-4a11b1358ab0.png)
 - [](# "clean-repo-tabs") [Moves the "Security" and "Insights"  to the repository navigation dropdown. Also moves the "Projects", "Actions" and "Wiki" tabs if they're empty/unused.](https://user-images.githubusercontent.com/16872793/124681343-4a6c3c00-de96-11eb-9055-a8fc551e6eb8.png)
 - [](# "repo-avatars") [Adds the profile picture to the header of public repositories.](https://github-production-user-asset-6210df.s3.amazonaws.com/1402241/255323568-aee4d90e-844e-41e8-880a-ce466826516c.png)
-- [](# "quick-new-issue") [Adds a link to create issues from anywhere in a repository.](https://user-images.githubusercontent.com/1402241/218251057-b94b62dd-a944-4763-b78a-fc233f7c9fd3.png)
-- [](# "small-user-avatars") [Shows a small avatar next to the username in conversation lists.](https://user-images.githubusercontent.com/44045911/230960291-721f42cc-e1ac-4fdc-83ea-2430b062f9ce.png)
+- [](# "quick-new-issue") [Adds a link to create issues from anywhere in a repository.](https://github-production-user-asset-6210df.s3.amazonaws.com/1402241/274816033-820ec518-049d-4248-9f8a-27b9423e350b.png)
+- [](# "small-user-avatars") [Shows a small avatar next to the username in conversation lists and mentions.](https://github-production-user-asset-6210df.s3.amazonaws.com/1402241/271184107-24ec471e-54d1-434a-a5f2-615902d2cad9.png)
 - [](# "unreleased-commits") 🔥 [Tells you whether you're looking at the latest version of a repository, or if there are any unreleased commits.](https://github-production-user-asset-6210df.s3.amazonaws.com/1402241/267236196-8564c193-a3c7-4248-9735-54749c1990c7.png)
 - [](# "action-pr-link") 🔥 [Adds a link back to the PR that ran the workflow.](https://github-production-user-asset-6210df.s3.amazonaws.com/50487467/241645264-076a0137-36a2-4fd0-a66e-735ef3b3a563.png)
 - [](# "mobile-tabs") [Makes the tabs more compact on mobile so more of them can be seen.](https://user-images.githubusercontent.com/1402241/245446231-28f44b59-0151-4986-8cb9-05b5645592d8.png)
@@ -271,6 +271,7 @@ Thanks for contributing! 🦋🙌
 - [](# "no-duplicate-list-update-time") [Hides the update time of conversations in lists when it matches the open/closed/merged time.](https://user-images.githubusercontent.com/1402241/111357166-ac3a3900-864e-11eb-884a-d6d6da88f7e2.png)
 - [](# "linkify-user-labels") [Links the "Contributor" and "Member" labels on comments to the author’s commits on the repo.](https://user-images.githubusercontent.com/1402241/177033344-4d4eea63-e075-4096-b2d4-f4b879f1df31.png)
 - [](# "jump-to-conversation-close-event") [Adds a link to jump to the latest close event of a conversation.](https://user-images.githubusercontent.com/16872793/177792713-64219754-f8df-4629-a9ec-33259307cfe7.gif)
+- [](# "close-as-unplanned") [Lets you "close issue as unplanned" in one click instead of three.](https://github-production-user-asset-6210df.s3.amazonaws.com/1402241/279745773-709cde60-c26a-4a0e-89e1-56444d25ebdf.png)
 
 <!-- Refer to style guide above. Keep this message between sections. -->
 
