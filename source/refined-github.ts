@@ -218,4 +218,3 @@ import './features/repo-header-info.js';
 import './features/rgh-pr-template.js';
 import './features/close-as-unplanned.js';
 import './features/comment-type-buttons.js';
-import './features/pr-template-selector.js';
