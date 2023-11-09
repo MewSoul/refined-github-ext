@@ -51,7 +51,10 @@ function addCommentTypeButtons(referenceButton: HTMLElement): void {
 }
 
 function init(signal: AbortSignal): void {
-	observe('md-ref', addCommentTypeButtons, {signal});
+	observe([
+		'md-ref', // TODO: Drop in June 2024
+		'.ActionBar-item:has([data-md-button=\'task-list\'])',
+	], addCommentTypeButtons, {signal});
 	delegate('.rgh-comment-type-btn-note', 'click', addCommentTypeNote, {signal});
 	delegate('.rgh-comment-type-btn-details', 'click', addCommentTypeDetails, {signal});
 	delegate('.rgh-comment-type-btn-change', 'click', addCommentTypeChange, {signal});
