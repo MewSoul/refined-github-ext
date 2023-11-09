@@ -19,7 +19,7 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 1. Download the latest [release](https://github.com/HypixelStudios/refined-github-extended/releases) and unzip the archive.
 2. Open your Chromium browser at the extension page (e.g. `chrome://extensions/`, `brave://extensions/`...).
 3. Toggle on `Developer mode` located in the top right hand corner.
-4. Click `Load unpacked` and select the folder `refined-github-ext` you extracted.
+4. Click `Load unpacked` and select the folder `refined-github-ext` you extracted (in that folder there should be a `manifest.json` file and an `assets` folder).
 5. The extension is now installed.
 
 #### Firefox
@@ -39,6 +39,7 @@ GitHub Enterprise is also supported: [How to enable it](https://fregante.github.
 5. A - For Chromium browsers: Make sure `Developer mode` is enabled (located in the top right hand corner), click `Load unpacked` and select the folder `distribution` that has been created previously.
 5. B - For Firefox: Click on `Load Temporary Add-On...`, open the folder `distribution` that has been created previously and select `options.html`.
 6. The extension is now installed.
+7. If you install it this way, when you have to update the plugin, simply pull the latest commit for the repo, and then refresh the app from the extension page.
 
 ### Sponsor
 
